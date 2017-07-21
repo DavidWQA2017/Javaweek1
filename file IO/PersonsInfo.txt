@@ -1,0 +1,5 @@
+Bill,25,Mechanic
+Steve,32,Manager
+Harry,21,Receptionist
+Paul,22,Technician
+Jake,28,Consultant
