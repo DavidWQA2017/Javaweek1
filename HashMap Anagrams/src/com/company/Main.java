@@ -47,7 +47,7 @@ public class Main
     public static ArrayList<String> sortLetters(ArrayList<String> anagramList)
     {
         char[] unSorted;
-        char[] word = "abc".toCharArray();
+        char[] word;
 
         ArrayList<String> anagramsPerWord = new ArrayList<>();
         HashMap<String, ArrayList<String>> mostAnagrams = new HashMap<>();
@@ -96,8 +96,64 @@ public class Main
         }
         System.out.println(currentWord);
 
+        int wordSize = currentWord.toCharArray().length;
+        System.out.println(wordSize);
 
-        return anagramsPerWord;
+        ArrayList<String> anagramsWithTheMostAnagrams = new ArrayList<>();
+        // find all keys that apply to the biggest amount of anagrams within file.
+        for (Map.Entry<String, ArrayList<String>> entry : mostAnagrams.entrySet())
+        {
+            if (maxAnagrams == entry.getValue().size())
+            {
+                System.out.println(currentWord + " in second  loop ");
+                maxAnagrams = entry.getValue().size();
+                currentWord = entry.getKey();
+                anagramsWithTheMostAnagrams.add(currentWord);
+                if (currentWord.toCharArray().length > wordSize)
+                {
+                    wordSize = currentWord.toCharArray().length;
+                }
+
+            }
+            else
+            {
+
+            }
+        }
+        System.out.println(anagramsWithTheMostAnagrams);
+        System.out.println(wordSize);
+
+        ArrayList<String> anagramsWithTheMostLetters = new ArrayList<>();
+        // find all keys that have the most letters.
+        for (int i = 0; i < anagramsWithTheMostAnagrams.size(); i++)
+        {
+            currentWord = anagramsWithTheMostAnagrams.get(i);
+            if (currentWord.toCharArray().length == wordSize)
+            {
+                System.out.println();
+                anagramsWithTheMostLetters.add(currentWord);
+            }
+        }
+
+
+
+        /*
+
+        for (Map.Entry<String, ArrayList<String>> entry : mostAnagrams.entrySet())
+        {
+            currentWord = entry.getKey();
+            if (currentWord.toCharArray().length == wordSize)
+            {
+                System.out.println("Im here !");
+                anagramsWithTheMostLetters.add(currentWord);
+            }
+
+        }
+        */
+
+        System.out.println(anagramsWithTheMostLetters);
+
+        return anagramsWithTheMostLetters;
     }
 
     public static void main(String[] args) throws IOException
