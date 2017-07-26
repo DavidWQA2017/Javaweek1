@@ -1,3 +1,7 @@
 git add .
 git commit -m "the message"
 git push
+change branch - git checkout THEBRANCH
+download branches - git fetch 
+download code - git pull
+clone/downloads repostory - git clone URL

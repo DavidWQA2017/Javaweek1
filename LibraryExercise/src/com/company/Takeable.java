@@ -5,33 +5,33 @@ import java.util.Date;
 /**
  * Created by Administrator on 21/07/2017.
  */
-public class Takeable
+public interface Takeable
 {
-    Date dateTaken;
-    Date Datedue;
 
-    public void takeItemOut()
+    default public void takeItemOut()
     {
 
     }
 
-    public void putItemBack()
+    default public void putItemBack()
     {
 
     }
 
-    public String checkItemsAvailabiality()
+    default public boolean checkItemsAvailabiality(int itemID) ///change UML to reflect this
     {
 
 
-        return "";
+        return false;
     }
 
-    public void setDateTaken(Date dateTaken) {
-        this.dateTaken = dateTaken;
-    }
+    //default public void setDateTaken(Date dateTaken) {
 
-    public void setDatedue(Date datedue) {
-        Datedue = datedue;
+   // }
+
+    default public Date setDatedue(Date dateTaken, int borrowTenure) ///change UML to reflect this
+    {
+
+        return null;
     }
 }
