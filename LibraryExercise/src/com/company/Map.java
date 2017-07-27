@@ -32,4 +32,7 @@ public class Map extends Item implements Takeable
     public void setMapArea(String mapArea) {
         this.mapArea = mapArea;
     }
+
+
+
 }

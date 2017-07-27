@@ -10,16 +10,13 @@ public class Main {
 
     public static void main(String[] args) {
         int strtNumber = 1000000;
-        int number = 2000000;
+        int number = 3000000;
         HashMap<Integer, Integer> numberMap = new HashMap<>();
         long startTime = System.currentTimeMillis();
         System.out.println("started process");
         for (int i = strtNumber; i < number + 1; i++)
         {
-
             numberMap.put(i, i);
-
-
         }
 
 
@@ -51,6 +48,7 @@ public class Main {
             }
         long endTimeRest = System.currentTimeMillis();
         long totalTimeRest = (endTimeRest - startTimeRest);
+
         System.out.println(totalTimeRest + "ms");
             //System.out.println(numberList);
        // }

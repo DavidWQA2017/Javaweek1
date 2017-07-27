@@ -36,7 +36,7 @@ public class Library
         String postcode = in.nextLine();
         System.out.println("please enter your number ");
         String telephoneNumb = in.nextLine();
-        System.out.println(" thank you, entering you into the system ");
+        System.out.println("thank you, entering you into the system ");
 
         Person  newMember = new Person(personalID, firstName, lastName, addressLine1, postcode, telephoneNumb, 0);
         lib.members.add(newMember);
@@ -44,13 +44,8 @@ public class Library
         return lib;
     }
 
-    public Library removePerson(Library lib)
+    public int checkRecords(int entryValue , String entry , Library lib)
     {
-        Scanner in = new Scanner(System.in);
-        System.out.println(" please enter the first name of the person you wish to remove ");
-        String entry = in.nextLine().toLowerCase();
-
-        int entryValue=-1;
         for(int i = 0; i < lib.members.size(); i++)
         {
             String currentName = lib.members.get(i).getFirstName();
@@ -58,7 +53,18 @@ public class Library
             {
                 entryValue = i;
             }
+
         }
+        return entryValue;
+    }
+
+    public Library removePerson(Library lib)
+    {
+        Scanner in = new Scanner(System.in);
+        System.out.print("Please enter the first name of the person you wish to remove: ");
+        String entry = in.nextLine().toLowerCase();
+        int entryValue=-1;
+        entryValue = lib.checkRecords(entryValue, entry , lib );
 
         try
         {
@@ -76,8 +82,32 @@ public class Library
     public void findPerson()
     {}
 
-    public void updatePerson(int id)
+    public Library updatePerson(Library lib)
     {
+        Scanner in = new Scanner(System.in);
+        System.out.print("Please enter the first name of the person you wish to edit: ");
+        String entry = in.nextLine().toLowerCase();
+        int entryValue=-1;
+        entryValue = lib.checkRecords(entryValue, entry , lib);
+        System.out.println(entryValue);
 
+        System.out.print("please enter first name: ");
+        String cInput = in.nextLine().toLowerCase();
+        lib.members.get(entryValue).setFirstName(cInput);
+        System.out.print("please enter last name: ");
+        cInput = in.nextLine().toLowerCase();
+        lib.members.get(entryValue).setLastName(cInput);
+        System.out.print("please enter first line of address: ");
+        cInput = in.nextLine().toLowerCase();
+        lib.members.get(entryValue).setAddressLine1(cInput);
+        System.out.print("please enter postcode: ");
+        cInput = in.nextLine().toLowerCase();
+        lib.members.get(entryValue).setPostcode(cInput);
+        System.out.print("please enter your number: ");
+        cInput = in.nextLine().toLowerCase();
+        lib.members.get(entryValue).setTelephoneNumb(cInput);
+        System.out.println("thank you, Updating you in the system ");
+
+        return lib;
     }
 }
